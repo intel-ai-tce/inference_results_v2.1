@@ -93,7 +93,7 @@ please replace the IMAGE ID, YOUR SCRIPT and PATH accordingly.
 ```
 ./run_docker.sh <IMAGE ID>  /workspace/<YOUR SCRIPT in current host folder> <PATH of 3dunet codes in docker image> aws_3dunet
 ```
-Here is the example, and it should also work for all.
+Here is the example, and it should also work with the prepared AMI image.
 ```
 ./run_docker.sh ce03546c4d75  /workspace/run_AWS.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet
 ```
