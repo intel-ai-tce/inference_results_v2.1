@@ -86,4 +86,3 @@ bash make_preprocess.sh
 bash run_SPR56C_2S.sh acc
 bash run_SPR56C_2S.sh perf
 ```
-

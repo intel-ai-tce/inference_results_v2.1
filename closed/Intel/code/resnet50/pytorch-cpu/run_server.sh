@@ -29,22 +29,25 @@ if [ -z "${RN50_FULL}" ]; then
     exit 1
 fi
 
-CONDA_ENV_NAME=rn50-mlperf
-source ~/anaconda3/etc/profile.d/conda.sh
-conda activate ${CONDA_ENV_NAME}
+# comment out the follwoing lines for AWS
+# CONDA_ENV_NAME=rn50-mlperf
+# source ~/anaconda3/etc/profile.d/conda.sh
+# conda activate ${CONDA_ENV_NAME}
 
 export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms:9000000000,muzzy_decay_ms:9000000000"
 
-export LD_PRELOAD=${CONDA_PREFIX}/lib/libjemalloc.so
-
-export LD_PRELOAD=${LD_PRELOAD}:${CONDA_PREFIX}/lib/libiomp5.so
+# comment out the follwoing lines for AWS
+# export LD_PRELOAD=${CONDA_PREFIX}/lib/libjemalloc.so
+# export LD_PRELOAD=${LD_PRELOAD}:${CONDA_PREFIX}/lib/libiomp5.so
 
 KMP_SETTING="KMP_AFFINITY=granularity=fine,compact,1,0"
 export KMP_BLOCKTIME=1
 export $KMP_SETTING
 
 CUR_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-APP=${CUR_DIR}/build/bin/mlperf_runner
+
+# change {CUR_DIR} to {PWD} for AWS
+APP=${PWD}/build/bin/mlperf_runner
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${CONDA_PREFIX}/lib
 
@@ -52,7 +55,7 @@ if [ -e "mlperf_log_summary.txt" ]; then
     rm mlperf_log_summary.txt
 fi
 
-numactl -C 0-55,56-111 -m 0,1 ${APP} --scenario Server  \
+numactl -C 0-47 -m 0,1 ${APP} --scenario Server  \
 	--mode Performance  \
 	--mlperf_conf ${CUR_DIR}/src/mlperf.conf \
 	--user_conf ${CUR_DIR}/src/user.conf \
