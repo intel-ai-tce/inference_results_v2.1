@@ -88,8 +88,8 @@ bash run_SPR56C_2S.sh perf
 ```
 
 ## Run on AWS
-You could run the workload with prepared AWS AMI image.
-please replace the <IMAGE ID> <YOUR SCRIPT> and <PATH> accordingly.
+You could run the workload with prepared AWS AMI image.  
+please replace the IMAGE ID, YOUR SCRIPT and PATH accordingly.
 ```
 ./run_docker.sh <IMAGE ID>  /workspace/<YOUR SCRIPT in current folder> <PATH of 3dunet codes> aws_3dunet
 ```
