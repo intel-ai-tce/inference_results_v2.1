@@ -87,3 +87,13 @@ bash run_SPR56C_2S.sh acc
 bash run_SPR56C_2S.sh perf
 ```
 
+## Run on AWS
+You could run the workload with prepared AWS AMI image.
+please replace the <IMAGE ID> <YOUR SCRIPT> and <PATH> accordingly.
+```
+./run_docker.sh <IMAGE ID>  /workspace/<YOUR SCRIPT in current folder> <PATH of 3dunet codes> aws_3dunet
+```
+Here is the example, and it should also work for all.
+```
+./run_docker.sh ce03546c4d75  /workspace/run_AWS.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet
+```
