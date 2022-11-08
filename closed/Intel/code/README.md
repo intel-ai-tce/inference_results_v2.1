@@ -1,4 +1,4 @@
-#MLPerf Inference Benchmarks on AWS instances
+# MLPerf Inference Benchmarks on AWS instances
 
 ## Setup Instructions
 
