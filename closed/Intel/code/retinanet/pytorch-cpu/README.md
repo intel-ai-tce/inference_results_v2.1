@@ -96,7 +96,3 @@ run_offline_accuracy.sh
 ```
 run_server_accuracy.sh
 ```
-# Run on AWS
-```
-./run_docker.sh 5dfdb372208a  /workspace/run_offline.sh  /opt/workdir/code/retinanet/pytorch-cpu aws_ret
-```

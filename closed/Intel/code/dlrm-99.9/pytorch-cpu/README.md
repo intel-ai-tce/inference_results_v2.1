@@ -127,7 +127,3 @@ please follow the #step7- Run command for server and offline mode above
 ```
 
 
-# Run on AWS
-```
-./run_docker.sh 038cf950d509  /workspace/RUN.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm
-```
