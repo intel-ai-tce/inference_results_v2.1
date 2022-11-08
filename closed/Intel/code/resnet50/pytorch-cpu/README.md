@@ -33,6 +33,8 @@ git clone -b v2.6 https://github.com/oneapi-src/oneDNN.git onednn
   wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
   bash Anaconda3-2022.05-Linux-x86_64.sh
   ```
+  
+
 + Setup conda environment to install requirements, and build packages
   ```
   bash prepare_env.sh
@@ -112,3 +114,7 @@ run_offline_accuracy.sh
 ```
 run_server_accuracy.sh
 ```
+ # Run on AWS
+  ```
+ ./run_docker.sh a17e4ea194cc  /workspace/run_offline.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50
+  ```
