@@ -37,7 +37,7 @@ fi
 
 if [ ${mode} = "server" ]; then
     scenario="server"
-    source /workspace/setup_env_server.sh
+    source /workspace/setup_env_server_ICX.sh
 fi
 
 if [ ${run_type} = "perf" ];then
