@@ -6,6 +6,15 @@
 
 ## How to Run on AWS
 
+### Docker images list
+
+| IMAGE ID     | IMAGE REPO and TAG  |                                         
+| --------- | ------------------------------------------------ |
+| ce03546c4d75 | intel/intel-optimized-pytorch:mlperf-inference-2.1-3dunet_v2              | 
+| a17e4ea194cc | intel/intel-optimized-pytorch:mlperf-infernece-2.1-resnet50_v2 | 
+| 038cf950d509 | intel/intel-optimized-pytorch:mlperf-inference-2.1-dlrm_v2                   | 
+| 5dfdb372208a | intel/intel-optimized-pytorch:mlperf-inference-2.1-datacenter-retinanet_v2                   | 
+
 ### 3dunet
 
 ```
