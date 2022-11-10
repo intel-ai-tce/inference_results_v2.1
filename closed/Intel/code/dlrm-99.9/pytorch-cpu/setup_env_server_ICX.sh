@@ -7,6 +7,6 @@ export NUM_SOCKETS=$number_sockets        # i.e. 8
 export CPUS_PER_SOCKET=$cpu_per_socket   # i.e. 28
 export CPUS_PER_PROCESS=$cpu_per_socket  # which determine how much processes will be used
                                          # process-per-socket = CPUS_PER_SOCKET/CPUS_PER_PROCESS
-export CPUS_PER_INSTANCE=2  # instance-per-process number=CPUS_PER_PROCESS/CPUS_PER_INSTANCE
+export CPUS_PER_INSTANCE=8  # instance-per-process number=CPUS_PER_PROCESS/CPUS_PER_INSTANCE
                              # total-instance = instance-per-process * process-per-socket
 export BATCH_SIZE=8000
