@@ -28,7 +28,7 @@ please replace the IMAGE ID, YOUR SCRIPT and PATH accordingly.
 ```
 Here is the example, and it should also work with the prepared AMI image.
 ```
-../../run_docker.sh ce03546c4d75  /workspace/run_AWS.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet
+../../run_docker.sh ce03546c4d75  /workspace/run_offline.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet
 ```
 
 ### Resnet50
@@ -47,9 +47,8 @@ cd dlrm-99.9/pytorch-cpu/
 ```
 ```
 ../../run_docker.sh 038cf950d509  /workspace/run_offline.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm
-# Please change 'run_offline.sh' to 'run_offline_accuracy.sh', 'run_server.sh' or 'run_server_accuracy.sh' accordingly, based on your desired benchmark type and the mode.
 ```
-
+> Please change 'run_offline.sh' to 'run_offline_accuracy.sh', 'run_server.sh' or 'run_server_accuracy.sh' accordingly, based on your desired benchmark type and the mode.
 ### Retinanet
 
 ```
