@@ -35,5 +35,6 @@ docker run -a stdout  $DOCKER_RUN_ENVS  \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg \
+    --ipc host \
     "$image_id" \
     "$commands"

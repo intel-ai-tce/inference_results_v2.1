@@ -46,7 +46,8 @@ cd resnet50/pytorch-cpu/
 cd dlrm-99.9/pytorch-cpu/
 ```
 ```
-../../run_docker.sh 038cf950d509  /workspace/RUN.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm
+../../run_docker.sh 038cf950d509  /workspace/run_offline.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm
+# Please change 'run_offline.sh' to 'run_offline_accuracy.sh', 'run_server.sh' or 'run_server_accuracy.sh' accordingly, based on your desired benchmark type and the mode.
 ```
 
 ### Retinanet
