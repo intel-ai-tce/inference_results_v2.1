@@ -1,2 +1,2 @@
-bash run_offline.sh acc
+bash /workplace/run_offline.sh acc
 
