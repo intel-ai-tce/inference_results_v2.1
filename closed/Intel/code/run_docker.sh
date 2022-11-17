@@ -33,6 +33,7 @@ if [ -z "$5" ] ; then
 docker run -a stdout  $DOCKER_RUN_ENVS  \
     --workdir "$workdir" \
     --volume $(pwd):/workspace \
+    -v"/media:/media" \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg \
@@ -43,6 +44,7 @@ else
 docker run  $DOCKER_RUN_ENVS  \
     --workdir "$workdir" \
     --volume $(pwd):/workspace \
+    -v"/media:/media" \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg \
