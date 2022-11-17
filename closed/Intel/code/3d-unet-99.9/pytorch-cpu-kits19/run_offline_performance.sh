@@ -1,1 +1,1 @@
-bash run_offline.sh
+bash /workplace/run_offline.sh
