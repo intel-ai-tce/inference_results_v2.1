@@ -9,7 +9,8 @@ cd resnet50/pytorch-cpu/
 cd ../../
 
 cd dlrm-99.9/pytorch-cpu/
-../../run_docker.sh 038cf950d509  /workspace/run_offline.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm  dlrm.txt
+../../run_docker.sh 038cf950d509  /workspace/run_offline_accuracy.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm  dlrm_acc.txt
+../../run_docker.sh 038cf950d509  /workspace/run_offline.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm  dlrm_perf.txt
 cd ../../
 
 cd retinanet/pytorch-cpu/
