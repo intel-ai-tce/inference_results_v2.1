@@ -4,7 +4,8 @@ cd 3d-unet-99.9/pytorch-cpu-kits19/
 cd ../../
 
 cd resnet50/pytorch-cpu/
-../../run_docker.sh a17e4ea194cc  /workspace/run_offline.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50.txt
+../../run_docker.sh a17e4ea194cc  /workspace/run_offline_accuracy.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_acc.txt
+../../run_docker.sh a17e4ea194cc  /workspace/run_offline.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_perf.txt
 cd ../../
 
 cd dlrm-99.9/pytorch-cpu/
