@@ -1,5 +1,6 @@
 cd 3d-unet-99.9/pytorch-cpu-kits19/
-../../run_docker.sh ce03546c4d75  /workspace/run_offline.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet.txt
+../../run_docker.sh ce03546c4d75  /workspace/run_offline_accuracy.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_acc.txt
+../../run_docker.sh ce03546c4d75  /workspace/run_offline_performance.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_perf.txt
 cd ../../
 
 cd resnet50/pytorch-cpu/
