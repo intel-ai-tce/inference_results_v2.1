@@ -20,8 +20,7 @@ chmod +x run_offline.sh
 cd ../../
 
 cd 3d-unet-99.9/pytorch-cpu-kits19/
-chmod +x run_offline_accuracy.sh
-chmod +x run_offline_performance.sh
-../../run_docker.sh ce03546c4d75  /workspace/run_offline_accuracy.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_acc.txt
-../../run_docker.sh ce03546c4d75  /workspace/run_offline_performance.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_perf.txt
+chmod +x run_offline.sh
+../../run_docker.sh ce03546c4d75  /workspace/run_offline.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_acc.txt env_acc.list
+../../run_docker.sh ce03546c4d75  /workspace/run_offline.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_perf.txt env_perf.list 
 cd ../../

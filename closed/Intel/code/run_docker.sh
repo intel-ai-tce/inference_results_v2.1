@@ -1,5 +1,5 @@
 if [[ -z "$1"  ||  -z "$2" ||  -z "$3"  ]] ; then
-    echo "Usage:  $0    <image name or docker id> <Bash commands> <workdir> <optional: docker instance name> <optional: docker log file>"
+    echo "Usage:  $0    <image name or docker id> <Bash commands> <workdir> <optional: docker instance name> <optional: docker log file> <optional: env.list file>"
     echo "Missing Docker image id or Bash commands.  exiting"
     exit -1
 fi
@@ -20,6 +20,17 @@ if [ -d "$GPU_DEV" ]; then
     gpu_arg=" --device=/dev/dri --ipc=host "
 fi
 
+envfile_arg=""
+if [ -z "$6" ] ; then
+ENV_FILE="env.list"
+else
+ENV_FILE="$6"
+fi
+
+if [ -f "$ENV_FILE" ]; then
+    echo "$ENV_FILE exists."
+    envfile_arg=" --env-file ${ENV_FILE} "
+fi
 ## remove any previously running containers
 docker rm -f "$name"
 
@@ -36,7 +47,7 @@ docker run -a stdout  $DOCKER_RUN_ENVS  \
     -v"/media:/media" \
     --privileged --init -it \
     --net host \
-    --name "$name" $gpu_arg \
+    --name "$name" $gpu_arg $envfile_arg \
     --ipc host \
     "$image_id" \
     "$commands"
@@ -47,7 +58,7 @@ docker run  $DOCKER_RUN_ENVS  \
     -v"/media:/media" \
     --privileged --init -it \
     --net host \
-    --name "$name" $gpu_arg \
+    --name "$name" $gpu_arg $envfile_arg \
     --ipc host \
     "$image_id" \
     "$commands"
