@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# comment out for running automation script on AWS
 # source ./run_common.sh
 source /workspace/run_common.sh
 
 common_opt="--config ./mlperf.conf"
+# comment out for running automation script on AWS
 # OUTPUT_DIR=$PWD/output/$name/$mode/$test_type
 OUTPUT_DIR=/workspace/output/$name/$mode/$test_type
 if [[ $test_type == "performance" ]]; then
