@@ -9,6 +9,8 @@ else
 name="$4"
 fi
 
+data_dir="$7"
+
 image_id="$1"
 commands="$2"
 workdir="$3"
@@ -40,12 +42,13 @@ mydir=$(cd -P -- "$(dirname -- "$this")" && pwd -P)
 
 export DOCKER_RUN_ENVS="-e ftp_proxy=${ftp_proxy} -e FTP_PROXY=${FTP_PROXY} -e http_proxy=${http_proxy} -e HTTP_PROXY=${HTTP_PROXY} -e https_proxy=${https_proxy} -e HTTPS_PROXY=${HTTPS_PROXY} -e no_proxy=${no_proxy} -e NO_PROXY=${NO_PROXY} -e socks_proxy=${socks_proxy} -e SOCKS_PROXY=${SOCKS_PROXY}"
 
+
 if [ -z "$5" ] ; then
 docker run -a stdout  $DOCKER_RUN_ENVS  \
     --workdir "$workdir" \
     --volume $(pwd):/workspace \
     -v"/media:/media" \
-    -v $(pwd):/data/mlperf_data/3dunet
+    --volume "$data_dir":/data/mlperf_data/3dunet \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg $envfile_arg \
@@ -57,7 +60,7 @@ docker run  $DOCKER_RUN_ENVS  \
     --workdir "$workdir" \
     --volume $(pwd):/workspace \
     -v"/media:/media" \
-    -v $(pwd):/data/mlperf_data/3dunet
+    --volume "$data_dir":/data/mlperf_data/3dunet \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg $envfile_arg \
