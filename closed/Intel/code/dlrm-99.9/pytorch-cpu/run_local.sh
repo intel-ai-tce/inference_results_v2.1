@@ -1,9 +1,11 @@
 #!/bin/bash
 
-source ./run_common.sh
+# source ./run_common.sh
+source /workspace/run_common.sh
 
 common_opt="--config ./mlperf.conf"
-OUTPUT_DIR=$PWD/output/$name/$mode/$test_type
+# OUTPUT_DIR=$PWD/output/$name/$mode/$test_type
+OUTPUT_DIR=/workspace/output/$name/$mode/$test_type
 if [[ $test_type == "performance" ]]; then
     OUTPUT_DIR=$OUTPUT_DIR/run_1
 fi
