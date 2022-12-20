@@ -1,6 +1,22 @@
 #!/bin/bash
-export DATA_DIR=/opt/workdir/data/openimages
-export MODEL_PATH=/opt/workdir/data/retinanet-int8-model.pth
+cd retinanet/pytorch-cpu/
+CUR_DIR=$(pwd)
+export WORKLOAD_DATA=${CUR_DIR}/data
+mkdir -p ${WORKLOAD_DATA}
+export ENV_DEPS_DIR=${CUR_DIR}/retinanet-env
+bash openimages_mlperf.sh --dataset-path ${WORKLOAD_DATA}/openimages
+bash openimages_calibration_mlperf.sh --dataset-path ${WORKLOAD_DATA}/openimages-calibration
+wget --no-check-certificate 'https://zenodo.org/record/6617981/files/resnext50_32x4d_fpn.pth' -O 'retinanet-model.pth'
+mv 'retinanet-model.pth' ${WORKLOAD_DATA}/
+export CALIBRATION_DATA_DIR=${WORKLOAD_DATA}/openimages-calibration/train/data
+export MODEL_CHECKPOINT=${WORKLOAD_DATA}/retinanet-model.pth
+export CALIBRATION_ANNOTATIONS=${WORKLOAD_DATA}/openimages-calibration/annotations/openimages-mlperf-calibration.json
+bash run_calibration.sh
+export DATA_DIR=${WORKLOAD_DATA}/openimages
+export MODEL_PATH=${WORKLOAD_DATA}/retinanet-int8-model.pth
+
+# export DATA_DIR=/opt/workdir/data/openimages
+# export MODEL_PATH=/opt/workdir/data/retinanet-int8-model.pth
 number_threads=`nproc --all`
 number_cores=$((number_threads/2))
 number_instance=$((number_threads/4))
