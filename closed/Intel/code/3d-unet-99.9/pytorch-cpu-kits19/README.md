@@ -86,3 +86,20 @@ bash make_preprocess.sh
 bash run_SPR56C_2S.sh acc
 bash run_SPR56C_2S.sh perf
 ```
+
+
+## Run on docker (automation script)
+
+### The objective of this automation script is to revert the Docker containers to their previous state (without the dataset and model stored inside the container) and build an external script to automate the process of running the container on AWS and automatically download any datasets or models with minimal interaction from the user.
+
+### 1. Download Dataset on host
+
+```
+follow the #step2-Download Dataset to prepare dataset on host
+```
+
+### 2. Run the automation script
+
+```
+bash run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-3dunet /workspace/run_offline.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_perf.txt env_perf.list ~/mlperf_data/3dunet-kits
+```
