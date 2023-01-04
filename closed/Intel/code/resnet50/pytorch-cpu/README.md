@@ -42,7 +42,7 @@ git clone -b v2.6 https://github.com/oneapi-src/oneDNN.git onednn
 ###Setup with docker image
   you can skip the setup conda env and use a docker image
   ```
-  docker run intel_resnet50 --privileged -itd --net=host --ipc=host intel/intel-optimized-pytorch:mlperf-submission-inference-2.1-resnet50
+  docker run --name intel_resnet50 --privileged -itd --net=host --ipc=host intel/intel-optimized-pytorch:mlperf-submission-inference-2.1-resnet50
   docker exec -it intel_resnet50 bash
   cd code/resnet50/pytorch-cpu
   export http_proxy=<your/proxy>
