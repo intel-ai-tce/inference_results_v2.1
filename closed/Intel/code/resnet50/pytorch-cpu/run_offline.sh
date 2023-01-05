@@ -4,10 +4,17 @@ number_cores=$((number_threads/2))
 number_sockets=`grep physical.id /proc/cpuinfo | sort -u | wc -l`
 cpu_per_socket=$((number_cores/number_sockets))
 
-export DATA_DIR=${PWD}/ILSVRC2012_img_val
-export RN50_START=${PWD}/models/resnet50-start-int8-model.pth
-export RN50_END=${PWD}/models/resnet50-end-int8-model.pth
-export RN50_FULL=${PWD}/models/resnet50-full.pth
+export DATA_CAL_DIR=/workspace/calibration_dataset
+export CHECKPOINT=/workspace/resnet50-fp32-model.pth
+
+bash /workspace/generate_torch_model.sh
+bash /workspace/build_binaries.sh
+echo "step 3 finished"
+
+export DATA_DIR=/workspace/ILSVRC2012_img_val
+export RN50_START=/workspace/models/resnet50-start-int8-model.pth
+export RN50_END=/workspace/models/resnet50-end-int8-model.pth
+export RN50_FULL=/workspace/models/resnet50-full.pth
 
 
 if [ -z "${DATA_DIR}" ]; then
@@ -49,7 +56,8 @@ export KMP_BLOCKTIME=1
 export $KMP_SETTING
 
 CUR_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-APP=${PWD}/build/bin/mlperf_runner
+# CUR_DIR=${PWD}
+APP=/opt/workdir/code/resnet50/pytorch-cpu/build/bin/mlperf_runner
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${CONDA_PREFIX}/lib
 
