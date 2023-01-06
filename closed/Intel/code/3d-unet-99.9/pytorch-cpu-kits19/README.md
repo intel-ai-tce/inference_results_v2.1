@@ -88,7 +88,7 @@ bash run_SPR56C_2S.sh perf
 ```
 
 
-## Run on docker (automation script)
+## Run on host with docker environment (automation script)
 
 ### You could run the workload with prepared docker image, without going into the docker image container. This script can automatically process running docker containers with minimal user intervention, using the pre-trained models and datasets that are saved outside of the container environment. 
 
