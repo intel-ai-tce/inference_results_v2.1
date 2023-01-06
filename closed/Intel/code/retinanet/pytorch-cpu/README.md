@@ -126,3 +126,11 @@ Offline Accuracy
 ```
 ./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-datacenter-retinanet /workspace/run_offline_accuracy.sh  /opt/workdir/code/retinanet/pytorch-cpu aws_ret  retinanet_offline_acc.txt
 ```
+Server Performance 
+```
+./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-datacenter-retinanet /workspace/run_server.sh  /opt/workdir/code/retinanet/pytorch-cpu aws_ret  retinanet_server_perf.txt
+```
+Server Accuracy
+```
+./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-datacenter-retinanet /workspace/run_server_accuracy.sh  /opt/workdir/code/retinanet/pytorch-cpu aws_ret  retinanet_server_acc.txt
+```
