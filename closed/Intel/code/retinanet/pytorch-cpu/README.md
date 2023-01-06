@@ -117,6 +117,7 @@ mv 'retinanet-model.pth' ./data
 ```
 
 + Run the automation script 
+
 Offline Performance 
 ```
 ./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-datacenter-retinanet /workspace/run_offline.sh  /opt/workdir/code/retinanet/pytorch-cpu aws_ret  retinanet_offline_perf.txt
