@@ -54,7 +54,7 @@ ${APP} --scenario Offline \
 	--model_name retinanet \
     --model_path ${MODEL_PATH} \
 	--data_path ${DATA_DIR} \
-	--num_instance 28 \
+	--num_instance $number_instance \
 	--warmup_iters 100 \
 	--cpus_per_instance 4 \
 	--total_sample_count 24781 \
