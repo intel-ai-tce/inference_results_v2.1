@@ -1,9 +1,21 @@
 #!/bin/bash
 
-export DATA_DIR=${PWD}/ILSVRC2012_img_val
-export RN50_START=${PWD}/models/resnet50-start-int8-model.pth
-export RN50_END=${PWD}/models/resnet50-end-int8-model.pth
-export RN50_FULL=${PWD}/models/resnet50-full.pth
+number_threads=`nproc --all`
+number_cores=$((number_threads/2))
+number_sockets=`grep physical.id /proc/cpuinfo | sort -u | wc -l`
+cpu_per_socket=$((number_cores/number_sockets))
+
+export DATA_CAL_DIR=/workspace/calibration_dataset
+export CHECKPOINT=/workspace/resnet50-fp32-model.pth
+
+bash /workspace/generate_torch_model.sh
+bash /workspace/build_binaries.sh
+echo "step 3 finished"
+
+export DATA_DIR=/workspace/ILSVRC2012_img_val
+export RN50_START=/workspace/models/resnet50-start-int8-model.pth
+export RN50_END=/workspace/models/resnet50-end-int8-model.pth
+export RN50_FULL=/workspace/models/resnet50-full.pth
 
 if [ -z "${DATA_DIR}" ]; then
     echo "Path to dataset not set. Please set it:"
@@ -46,8 +58,7 @@ export $KMP_SETTING
 
 CUR_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-# change {CUR_DIR} to {PWD} for AWS
-APP=${PWD}/build/bin/mlperf_runner
+APP=/opt/workdir/code/resnet50/pytorch-cpu/build/bin/mlperf_runner
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${CONDA_PREFIX}/lib
 
@@ -55,7 +66,7 @@ if [ -e "mlperf_log_summary.txt" ]; then
     rm mlperf_log_summary.txt
 fi
 
-numactl -C 0-47 -m 0,1 ${APP} --scenario Server  \
+numactl -m 0,1 ${APP} --scenario Server  \
 	--mode Performance  \
 	--mlperf_conf ${CUR_DIR}/src/mlperf.conf \
 	--user_conf ${CUR_DIR}/src/user.conf \
@@ -64,7 +75,7 @@ numactl -C 0-47 -m 0,1 ${APP} --scenario Server  \
     --rn50-part3 ${RN50_END} \
     --rn50-full-model ${RN50_FULL} \
 	--data_path ${DATA_DIR} \
-	--num_instance 28 \
+	--num_instance $number_threads \
 	--warmup_iters 50 \
 	--cpus_per_instance 4 \
 	--total_sample_count 50000 \
