@@ -124,5 +124,19 @@ bash prepare_calibration_dataset.sh
 bash download_model.sh
 ```
 + Run the automation script 
+Offline Performance
+```
 ./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-resnet50 /workspace/run_offline.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_offline_perf.txt
+```
+Offline Accuracy
+```
+./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-resnet50 /workspace/run_offline_accuracy.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_offline_acc.txt
+```
+Server Performance
+```
+./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-resnet50 /workspace/run_server.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_server_perf.txt
+```
+Server Accuracy
+```
+./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-resnet50 /workspace/run_server_accuracy.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_server_acc.txt
 ```
