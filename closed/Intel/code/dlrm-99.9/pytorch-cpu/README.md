@@ -131,3 +131,10 @@ please follow the #step7- Run command for server and offline mode above
 ```
 ./run_docker.sh 038cf950d509  /workspace/RUN.sh  /opt/workdir/code/dlrm-99.9/pytorch-cpu aws_dlrm
 ```
+
+# Run on host with docker image (automation script)
+###  1. Prepare dataset and model in host
+
+```
+please follow the step above to prepare the dataset and model on host system.
+```
