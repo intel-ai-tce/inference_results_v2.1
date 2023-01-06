@@ -1,5 +1,3 @@
-bash /workspace/make_preprocess.sh
-
 number_threads=`nproc --all`
 echo $number_threads
 number_instance=$((number_threads/8))
