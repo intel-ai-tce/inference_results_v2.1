@@ -116,8 +116,13 @@ run_server_accuracy.sh
 ```
 
 ### Automation scripts with docker image
-+ Download Imagenet Dataset and models following the above steps.
-+ You could run the workload with prepared docker image. This script can automatically process running docker containers with minimal user intervention. This script will alleviate the need for the user to refer to numerous pages of instructions and instead plug and play with any pre-trained model housed in different Docker containers. 
++ You could run the workload with prepared docker image, without going into the docker image container. This script can automatically process running docker containers with minimal user intervention, using the pre-trained models and datasets that are saved outside of the container environment. This script will alleviate the need for the user to refer to numerous pages of instructions and instead plug and play with any pre-trained model housed in different Docker containers. 
++ Download Imagenet Dataset and models following the above steps. The dataset and models are saved in your environment, rather than the docker container environment.
 ```
+bash download_imagenet.sh
+bash prepare_calibration_dataset.sh
+bash download_model.sh
+```
++ Run the automation script 
 ./run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-resnet50 /workspace/run_offline.sh  /opt/workdir/code/resnet50/pytorch-cpu aws_rn50  resnet50_offline_perf.txt
 ```
