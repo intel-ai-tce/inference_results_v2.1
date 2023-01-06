@@ -101,9 +101,9 @@ follow the #step2-Download Dataset to prepare dataset on host
 ### 2. Run the automation script
 + Offline Performance 
 ```
-bash run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-3dunet /workspace/run_offline.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_perf.txt env_perf.list ~/mlperf_data/3dunet-kits
+bash run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-3dunet /workspace/run_offline_ori_docker.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_perf.txt env_perf.list ~/mlperf_data/3dunet-kits
 ```
 + Offline Accuracy
 ```
-bash run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-3dunet /workspace/run_offline_accuracy.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_offline_acc.txt env_perf.list ~/mlperf_data/3dunet-kits
+bash run_docker.sh intel/intel-optimized-pytorch:mlperf-inference-2.1-3dunet /workspace/run_offline_ori_docker.sh /opt/workdir/code/3d-unet-99.9/pytorch-cpu-kits19 aws_3dunet  3dunet_offline_acc.txt env_acc.list ~/mlperf_data/3dunet-kits
 ```
