@@ -1,6 +1,10 @@
 #!/bin/bash
-export DATA_DIR=/opt/workdir/data/openimages
-export MODEL_PATH=/opt/workdir/data/retinanet-int8-model.pth
+export CALIBRATION_DATA_DIR=/workspace/data/openimages-calibration/train/data
+export MODEL_CHECKPOINT=/workspace/data/retinanet-model.pth
+export CALIBRATION_ANNOTATIONS=/workspace/data/openimages-calibration/annotations/openimages-mlperf-calibration.json
+bash run_calibration.sh
+echo "step 1 done!"
+
 number_threads=`nproc --all`
 number_cores=$((number_threads/2))
 number_instance=$((number_threads/4))
