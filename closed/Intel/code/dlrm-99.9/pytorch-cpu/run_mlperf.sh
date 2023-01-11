@@ -32,12 +32,12 @@ source /workspace/setup_dataset.sh
 
 if [ ${mode} = "offline" ]; then
     scenario="offline"
-    source /workspace/setup_env_offline_ICX.sh
+    source /workspace/setup_env_offline_AWS.sh
 fi
 
 if [ ${mode} = "server" ]; then
     scenario="server"
-    source /workspace/setup_env_server_ICX.sh
+    source /workspace/setup_env_server_AWS.sh
 fi
 
 if [ ${run_type} = "perf" ];then
