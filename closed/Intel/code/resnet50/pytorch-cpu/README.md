@@ -116,7 +116,7 @@ run_server_accuracy.sh
 ```
 
 ### Run on host with docker image (automation script)
-+ You could run the workload with prepared docker image, without going into the docker image container. This script can automatically process running docker containers with minimal user intervention, using the pre-trained models and datasets that are saved outside of the container environment. This script will alleviate the need for the user to refer to numerous pages of instructions and instead plug and play with any pre-trained model housed in different Docker containers. 
+You could run the workload with prepared docker image, without going into the docker image container. This script can automatically process running docker containers with minimal user intervention, using the pre-trained models and datasets that are saved outside of the container environment.
 + Download Imagenet Dataset and models following the above steps. The dataset and models are saved in your environment, rather than the docker container environment.
 ```
 bash download_imagenet.sh
