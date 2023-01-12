@@ -49,8 +49,8 @@ fi
 export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms:9000000000,muzzy_decay_ms:9000000000"
 
 # comment out the follwoing lines for AWS
-# export LD_PRELOAD=${CONDA_PREFIX}/lib/libjemalloc.so
-# export LD_PRELOAD=${LD_PRELOAD}:${CONDA_PREFIX}/lib/libiomp5.so
+export LD_PRELOAD=${CONDA_PREFIX}/lib/libjemalloc.so
+export LD_PRELOAD=${LD_PRELOAD}:${CONDA_PREFIX}/lib/libiomp5.so
 
 KMP_SETTING="KMP_AFFINITY=granularity=fine,compact,1,0"
 export KMP_BLOCKTIME=1
