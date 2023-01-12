@@ -4,10 +4,17 @@ number_cores=$((number_threads/2))
 number_sockets=`grep physical.id /proc/cpuinfo | sort -u | wc -l`
 cpu_per_socket=$((number_cores/number_sockets))
 
-export DATA_DIR=${PWD}/ILSVRC2012_img_val
-export RN50_START=${PWD}/models/resnet50-start-int8-model.pth
-export RN50_END=${PWD}/models/resnet50-end-int8-model.pth
-export RN50_FULL=${PWD}/models/resnet50-full.pth
+export DATA_CAL_DIR=/workspace/calibration_dataset
+export CHECKPOINT=/workspace/resnet50-fp32-model.pth
+
+bash /workspace/generate_torch_model.sh
+bash /workspace/build_binaries.sh
+echo "step 3 finished"
+
+export DATA_DIR=/workspace/ILSVRC2012_img_val
+export RN50_START=/workspace/models/resnet50-start-int8-model.pth
+export RN50_END=/workspace/models/resnet50-end-int8-model.pth
+export RN50_FULL=/workspace/models/resnet50-full.pth
 
 
 if [ -z "${DATA_DIR}" ]; then
@@ -40,16 +47,17 @@ fi
 
 export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms:9000000000,muzzy_decay_ms:9000000000"
 
-#export LD_PRELOAD=${CONDA_PREFIX}/lib/libjemalloc.so
+export LD_PRELOAD=${CONDA_PREFIX}/lib/libjemalloc.so
 
-#export LD_PRELOAD=${LD_PRELOAD}:${CONDA_PREFIX}/lib/libiomp5.so
+export LD_PRELOAD=${LD_PRELOAD}:${CONDA_PREFIX}/lib/libiomp5.so
 
 KMP_SETTING="KMP_AFFINITY=granularity=fine,compact,1,0"
 export KMP_BLOCKTIME=1
 export $KMP_SETTING
 
 CUR_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-APP=${PWD}/build/bin/mlperf_runner
+# CUR_DIR=${PWD}
+APP=/opt/workdir/code/resnet50/pytorch-cpu/build/bin/mlperf_runner
 
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${CONDA_PREFIX}/lib
 
@@ -75,4 +83,3 @@ numactl -m 0 ${APP} --scenario Offline \
 if [ -e "mlperf_log_summary.txt" ]; then
     cat mlperf_log_summary.txt
 fi
-
