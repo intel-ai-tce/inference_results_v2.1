@@ -10,3 +10,4 @@ export CPUS_PER_PROCESS=$cpu_per_socket  # which determine how much processes wi
 export CPUS_PER_INSTANCE=8  # instance-per-process number=CPUS_PER_PROCESS/CPUS_PER_INSTANCE
                              # total-instance = instance-per-process * process-per-socket
 export BATCH_SIZE=8000
+export DNNL_MAX_CPU_ISA=AVX512_CORE_AMX
