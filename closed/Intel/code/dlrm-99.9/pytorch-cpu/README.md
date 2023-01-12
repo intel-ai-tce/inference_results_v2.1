@@ -128,6 +128,7 @@ please follow the #step7- Run command for server and offline mode above
 
 
 # Run on host with docker image (automation script)
+You could run the workload with prepared docker image, without going into the docker image container. This script can automatically process running docker containers with minimal user intervention, using the pre-trained models and datasets that are saved outside of the container environment.
 ###  1. Prepare dataset and model in host
 ```
 please follow the step above to prepare the dataset and model on host system.
