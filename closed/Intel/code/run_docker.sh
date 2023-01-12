@@ -49,6 +49,7 @@ docker run -a stdout  $DOCKER_RUN_ENVS  \
     --volume $(pwd):/workspace \
     -v"/media:/media" \
     --volume "$data_dir":/data/mlperf_data/3dunet \
+    --volume ~/MLPerf/dlrm:/dataspace \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg $envfile_arg \
@@ -61,6 +62,7 @@ docker run  $DOCKER_RUN_ENVS  \
     --volume $(pwd):/workspace \
     -v"/media:/media" \
     --volume "$data_dir":/data/mlperf_data/3dunet \
+    --volume ~/MLPerf/dlrm:/dataspace \
     --privileged --init -it \
     --net host \
     --name "$name" $gpu_arg $envfile_arg \
