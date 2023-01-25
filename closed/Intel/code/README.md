@@ -529,15 +529,6 @@ wget --no-check-certificate \
 mv 'retinanet-model.pth' ${WORKLOAD_DATA}/
 ```
 
-#### Calibrate and Generate TorchScript Model
-
-```
-export CALIBRATION_DATA_DIR=${WORKLOAD_DATA}/openimages-calibration/train/data
-export MODEL_CHECKPOINT=${WORKLOAD_DATA}/retinanet-model.pth
-export CALIBRATION_ANNOTATIONS=${WORKLOAD_DATA}/openimages-calibration/annotations/openimages-mlperf-calibration.json
-bash run_calibration.sh
-```
-
 ### Set Up Environment
 Follow these steps to set up the Docker instance and preprocess data.
 
@@ -565,11 +556,22 @@ export http_proxy="your host proxy"
 export https_proxy="your host proxy"
 ```
 
+#### Calibrate and Generate TorchScript Model
+
+```
+export WORKLOAD_DATA=${PWD}/data
+export CALIBRATION_DATA_DIR=${WORKLOAD_DATA}/openimages-calibration/train/data
+export MODEL_CHECKPOINT=${WORKLOAD_DATA}/retinanet-model.pth
+export CALIBRATION_ANNOTATIONS=${WORKLOAD_DATA}/openimages-calibration/annotations/openimages-mlperf-calibration.json
+bash run_calibration.sh
+```
+
 ### Run the Benchmark
 
 ```
-export DATA_DIR=/opt/workdir/code/retinanet/pytorch-cpu/data/openimages
-export MODEL_PATH=/opt/workdir/code/retinanet/pytorch-cpu/data/retinanet-int8-model.pth
+export DATA_DIR=data/openimages
+export MODEL_PATH=data/retinanet-int8-model.pth
+export ENV_DEPS_DIR=${PWD}
 
 # Run one of these performance or accuracy scripts at a time
 # since the log files will be overwritten on each run
