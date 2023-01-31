@@ -569,8 +569,9 @@ bash run_calibration.sh
 ### Run the Benchmark
 
 ```
-export DATA_DIR=data/openimages
-export MODEL_PATH=data/retinanet-int8-model.pth
+export WORKLOAD_DATA=${PWD}/data
+export DATA_DIR=${WORKLOAD_DATA}/openimages
+export MODEL_PATH=${WORKLOAD_DATA}/retinanet-int8-model.pth
 export ENV_DEPS_DIR=${PWD}
 
 # Run one of these performance or accuracy scripts at a time
